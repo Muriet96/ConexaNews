@@ -13,6 +13,26 @@ import {RootState} from '../../../store/types';
 
 type Props = StackScreenProps<NewsStackParamList, 'NewsList'>;
 
+/**
+ * Displays a list of news articles with search and favorites filtering functionality.
+ *
+ * This screen fetches news data, allows users to search articles by title or content,
+ * and toggle the display of favorite articles. It handles loading and error states,
+ * and persists favorite articles using AsyncStorage.
+ *
+ * @component
+ * @param {Props} props - The navigation props for the screen.
+ * @returns {JSX.Element} The rendered news list screen.
+ *
+ * @example
+ * <NewsListScreen navigation={navigation} />
+ *
+ * @remarks
+ * - Uses `useNews` hook for fetching news data.
+ * - Integrates with Redux for managing favorites.
+ * - Supports localization via `useTranslation`.
+ * - Displays loading and error states with retry capability.
+ */
 const NewsListScreen = ({ navigation }: Props) => {
   const theme = useTheme();
   const { t } = useTranslation('news');

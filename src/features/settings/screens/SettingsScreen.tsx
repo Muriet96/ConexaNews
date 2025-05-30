@@ -4,6 +4,24 @@ import { Button, Text, Surface, RadioButton } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import { useSettings } from '../hooks/useSettings';
 
+/**
+ * Displays the settings screen for the application.
+ *
+ * This screen allows the user to:
+ * - View their profile information (first name, last name, email).
+ * - Change the application language between Spanish and English.
+ * - Log out of their account with a confirmation prompt.
+ *
+ * The component uses the `useTranslation` hook for internationalization,
+ * and retrieves user data and logout functionality from the `useSettings` hook.
+ *
+ * UI elements include:
+ * - User information (if available)
+ * - Language selection via radio buttons
+ * - Logout button (if user is logged in)
+ *
+ * @component
+ */
 const SettingsScreen = () => {
   const { t, i18n } = useTranslation('settings');
   const [lang, setLang] = React.useState(i18n.language);

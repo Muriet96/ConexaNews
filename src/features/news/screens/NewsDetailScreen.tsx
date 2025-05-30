@@ -19,6 +19,22 @@ import { NewsStackParamList } from '../../../navigation/types';
 type Props = StackScreenProps<NewsStackParamList, 'NewsDetail'>;
 type NewsDetailRouteProp = RouteProp<NewsStackParamList, 'NewsDetail'>;
 
+/**
+ * Displays the details of a selected news item, including its image, title, publication date, and content.
+ * Allows users to mark the news item as a favorite or remove it from favorites.
+ * Handles the case where the news item is not found and provides a button to navigate back.
+ *
+ * @component
+ * @param {Props} props - The navigation props for the screen.
+ * @returns {JSX.Element} The rendered news detail screen.
+ *
+ * @remarks
+ * - Uses Redux to access the list of news and favorites.
+ * - Uses i18next for translations.
+ * - Uses React Native Paper components for UI.
+ * - Handles favorite toggling via Redux action.
+ * - Displays a not-found message if the news item does not exist.
+ */
 const NewsDetailScreen = ({ navigation } : Props) => {
   const route = useRoute<NewsDetailRouteProp>();
   const { id } = route.params;

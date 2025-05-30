@@ -6,6 +6,20 @@ import { useUsers } from '@features/users/hooks/useUsers';
 import { useDispatch } from 'react-redux';
 import { login } from '../settingsSlice';
 
+/**
+ * LoginScreen component provides a user interface for logging into the application.
+ * 
+ * Features:
+ * - Allows users to input their username and password.
+ * - Toggles password visibility.
+ * - Validates input fields and displays error messages for empty fields or invalid credentials.
+ * - Dispatches a login action upon successful authentication.
+ * - Utilizes translations for all displayed text.
+ * - Handles keyboard avoiding and scroll behavior for better UX on mobile devices.
+ * 
+ * @component
+ * @returns {JSX.Element} The rendered login screen.
+ */
 const LoginScreen = () => {
   const { t } = useTranslation('settings');
   const [username, setUsername] = React.useState('');

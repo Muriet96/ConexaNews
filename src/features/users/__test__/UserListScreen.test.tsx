@@ -55,7 +55,7 @@ describe('UserListScreen', () => {
     jest.clearAllMocks();
   });
 
-  it('muestra el indicador de carga si isLoading es true', () => {
+  it('shows the loading indicator if isLoading is true', () => {
     mockUsersHook = {
       data: [],
       isLoading: true,
@@ -66,7 +66,7 @@ describe('UserListScreen', () => {
     expect(getByTestId('loading-message')).toBeTruthy();
   });
 
-  it('muestra el mensaje de error si error existe', () => {
+  it('shows the error message if error exists', () => {
     mockUsersHook = {
       data: [],
       isLoading: false,
@@ -77,25 +77,25 @@ describe('UserListScreen', () => {
     expect(getByTestId('error-message')).toBeTruthy();
   });
 
-  it('muestra usuarios cuando hay datos', () => {
-  mockUsersHook = {
-    data: [{ id: 1, firstname: 'Ana', lastname: 'Gómez', email: 'ana@example.com', phone: '123456' }],
-    isLoading: false,
-    error: null,
-  };
+  it('shows users when data is present', () => {
+    mockUsersHook = {
+      data: [{ id: 1, firstname: 'Ana', lastname: 'Gómez', email: 'ana@example.com', phone: '123456' }],
+      isLoading: false,
+      error: null,
+    };
 
-  (useSelector as unknown as jest.Mock).mockImplementation((selectorFn) =>
-    selectorFn({ users: { users: mockUsersHook.data } })
-  );
+    (useSelector as unknown as jest.Mock).mockImplementation((selectorFn) =>
+      selectorFn({ users: { users: mockUsersHook.data } })
+    );
 
-  const { getByText } = renderWithProviders(<UserListScreen />);
+    const { getByText } = renderWithProviders(<UserListScreen />);
 
-  expect(getByText('Ana Gómez')).toBeTruthy();
-  expect(getByText('ana@example.com')).toBeTruthy();
-  expect(getByText('123456')).toBeTruthy();
-});
+    expect(getByText('Ana Gómez')).toBeTruthy();
+    expect(getByText('ana@example.com')).toBeTruthy();
+    expect(getByText('123456')).toBeTruthy();
+  });
 
-  it('muestra el mensaje de lista vacía si no hay usuarios', () => {
+  it('shows the empty list message if there are no users', () => {
     mockUsersHook = {
       data: [],
       isLoading: false,

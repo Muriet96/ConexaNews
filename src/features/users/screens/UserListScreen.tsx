@@ -6,9 +6,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../store/types';
 import { useUsers } from '../hooks/useUsers';
 
+/**
+ * Displays a list of users fetched from the store or API.
+ *
+ * Handles loading and error states, and renders a list of user cards with their details.
+ * If the list is empty, shows a localized empty message.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered user list screen.
+ *
+ * @remarks
+ * - Uses translations from the 'users' namespace.
+ * - Fetches users using a custom hook and Redux state.
+ * - Shows loading and error indicators as appropriate.
+ */
 const UserListScreen = () => {
   const { t } = useTranslation('users');
-  const dispatch = useDispatch();
   const { data: users, isLoading, error } = useUsers();
   const userList = useSelector((state: RootState) => state.users.users);
 

@@ -77,7 +77,7 @@ describe('SettingsScreen', () => {
     expect(getByText('No hay datos de usuario disponibles')).toBeTruthy();
   });
 
-  it('debería mostrar el radio del idioma actual como seleccionado', () => {
+  it('should show the current language radio as selected', () => {
     const { getByLabelText } = renderWithProviders(<SettingsScreen />);
     const spanishRadio = getByLabelText('Español');
     expect(spanishRadio.props.accessibilityState.checked).toBe(true);
@@ -86,13 +86,13 @@ describe('SettingsScreen', () => {
     expect(englishRadio.props.accessibilityState.checked).toBe(false);
   });
 
-  it('debería mostrar los textos en inglés cuando el idioma está en inglés', async () => {
+  it('should display texts in English when the language is set to English', async () => {
     const { getByText } = renderWithProviders(<SettingsScreen />, 'en');
     expect(getByText('Language')).toBeTruthy();
     expect(getByText('Logout')).toBeTruthy();
   });
 
-  it('debería mostrar un Alert de confirmación al presionar logout', () => {
+  it('should show a confirmation Alert when pressing logout', () => {
     const alertSpy = jest.spyOn(Alert, 'alert');
     const { getByText } = renderWithProviders(<SettingsScreen />);
     fireEvent.press(getByText('Cerrar sesión'));
@@ -107,7 +107,7 @@ describe('SettingsScreen', () => {
     alertSpy.mockRestore();
   });
 
-  it('debería llamar a logout al confirmar el Alert de logout', () => {
+  it('should call logout when confirming the logout Alert', () => {
     const alertSpy = jest.spyOn(Alert, 'alert');
     const { getByText } = renderWithProviders(<SettingsScreen />);
     fireEvent.press(getByText('Cerrar sesión'));

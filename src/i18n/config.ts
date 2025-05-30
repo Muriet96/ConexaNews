@@ -1,3 +1,12 @@
+/**
+ * i18n configuration for the app.
+ *
+ * @module i18n/config
+ * @remarks
+ * - Loads translations for all features.
+ * - Detects device language and sets fallback.
+ */
+
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import * as Localization from 'expo-localization';

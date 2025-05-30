@@ -42,14 +42,14 @@ describe('LoginScreen', () => {
     jest.clearAllMocks();
   });
 
-  it('renderiza el formulario de login', () => {
+  it('renders the login form', () => {
     const { getByTestId } = renderWithProviders(<LoginScreen />);
     expect(getByTestId('login-button')).toBeTruthy();
     expect(getByTestId('username-input')).toBeTruthy();
     expect(getByTestId('password-input')).toBeTruthy();
   });
 
-  it('muestra error si los campos están vacíos', async () => {
+  it('shows error if fields are empty', async () => {
     const { getByTestId, getByText } = renderWithProviders(<LoginScreen />);
     fireEvent.press(getByTestId('login-button'));
     await waitFor(() => {
@@ -57,7 +57,7 @@ describe('LoginScreen', () => {
     });
   });
 
-  it('muestra error si las credenciales son inválidas', async () => {
+  it('shows error if credentials are invalid', async () => {
     const { getByTestId, getByText } = renderWithProviders(<LoginScreen />);
     fireEvent.changeText(getByTestId('username-input'), 'wrong');
     fireEvent.changeText(getByTestId('password-input'), 'wrong');
@@ -67,7 +67,7 @@ describe('LoginScreen', () => {
     });
   });
 
-  it('despacha login si las credenciales son correctas', async () => {
+  it('dispatches login if credentials are correct', async () => {
     const { getByTestId, queryByText } = renderWithProviders(<LoginScreen />);
     fireEvent.changeText(getByTestId('username-input'), 'user');
     fireEvent.changeText(getByTestId('password-input'), 'pass');
@@ -79,7 +79,7 @@ describe('LoginScreen', () => {
     });
   });
 
-  it('permite alternar la visibilidad de la contraseña', () => {
+  it('allows toggling password visibility', () => {
     const { getByTestId } = renderWithProviders(<LoginScreen />);
     const passwordInput = getByTestId('password-input');
     const eyeIcon = getByTestId('toggle-password-visibility');
@@ -87,18 +87,18 @@ describe('LoginScreen', () => {
     expect(passwordInput).toBeTruthy();
   });
 
-  it('renderiza el botón de login', () => {
+  it('renders the login button', () => {
     const { getByTestId } = renderWithProviders(<LoginScreen />);
     expect(getByTestId('login-button')).toBeTruthy();
   });
 
-  it('renderiza los campos de entrada de usuario y contraseña', () => {
+  it('renders the username and password input fields', () => {
     const { getByTestId } = renderWithProviders(<LoginScreen />);
     expect(getByTestId('username-input')).toBeTruthy();
     expect(getByTestId('password-input')).toBeTruthy();
   });
 
-  it('usa behavior "padding" en iOS', () => {
+  it('adds paddingBottom style on iOS', () => {
     const originalOS = Platform.OS;
     Object.defineProperty(Platform, 'OS', { value: 'ios' });
     const { getByTestId } = renderWithProviders(<LoginScreen />);
@@ -109,7 +109,7 @@ describe('LoginScreen', () => {
     Object.defineProperty(Platform, 'OS', { value: originalOS });
   });
 
-  it('usa behavior "height" en Android', () => {
+  it('does not add paddingBottom style on Android', () => {
     const originalOS = Platform.OS;
     Object.defineProperty(Platform, 'OS', { value: 'android' });
     const { getByTestId } = renderWithProviders(<LoginScreen />);

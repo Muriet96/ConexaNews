@@ -41,7 +41,7 @@ describe('NewsListScreen', () => {
     jest.clearAllMocks();
   });
 
-  it('renderiza la lista de noticias y la barra de búsqueda', () => {
+  it('renders the news list and search bar', () => {
     (useNews as jest.Mock).mockReturnValue({
       data: [
         { id: 1, title: 'Noticia Uno', content: 'Contenido uno', image: '', category: '', publishedAt: '', updatedAt: '', userId: 1, url: '', slug: '', thumbnail: '', status: '' },
@@ -61,7 +61,7 @@ describe('NewsListScreen', () => {
     expect(getByText('Noticia Dos')).toBeTruthy();
   });
 
-  it('filtra noticias por búsqueda', () => {
+  it('filters news by search', () => {
     (useNews as jest.Mock).mockReturnValue({
       data: [
         { id: 1, title: 'Noticia Uno', content: 'Contenido uno', image: '', category: '', publishedAt: '', updatedAt: '', userId: 1, url: '', slug: '', thumbnail: '', status: '' },
@@ -82,7 +82,7 @@ describe('NewsListScreen', () => {
     expect(queryByText('Noticia Dos')).toBeTruthy();
   });
 
-  it('permite alternar favoritos', () => {
+  it('allows toggling favorites', () => {
     (useNews as jest.Mock).mockReturnValue({
       data: [
         { id: 1, title: 'Noticia Uno', content: 'Contenido uno', image: '', category: '', publishedAt: '', updatedAt: '', userId: 1, url: '', slug: '', thumbnail: '', status: '' },
@@ -101,7 +101,7 @@ describe('NewsListScreen', () => {
     expect(favButton).toBeTruthy();
   });
 
-  it('muestra el indicador de carga si isLoading es true', () => {
+  it('shows loading indicator if isLoading is true', () => {
     (useNews as jest.Mock).mockReturnValue({
       data: [],
       isLoading: true,
@@ -116,7 +116,7 @@ describe('NewsListScreen', () => {
     expect(getByTestId('loading-indicator')).toBeTruthy();
   });
 
-  it('muestra el mensaje de error si error existe', () => {
+  it('shows error message if error exists', () => {
     const refetchMock = jest.fn();
     (useNews as jest.Mock).mockReturnValue({
       data: [],
@@ -136,7 +136,7 @@ describe('NewsListScreen', () => {
     expect(refetchMock).toHaveBeenCalled();
   });
 
-  it('muestra mensaje de lista vacía si no hay resultados', () => {
+  it('shows empty list message if there are no results', () => {
     (useNews as jest.Mock).mockReturnValue({
       data: [],
       isLoading: false,
@@ -152,7 +152,7 @@ describe('NewsListScreen', () => {
     expect(getByTestId('empty-list-message')).toBeTruthy();
   });
 
-  it('muestra lista vacía si news es undefined', () => {
+  it('shows empty list if news is undefined', () => {
     (useNews as jest.Mock).mockReturnValue({
       data: undefined,
       isLoading: false,
@@ -168,7 +168,7 @@ describe('NewsListScreen', () => {
     expect(getByTestId('empty-list-message')).toBeTruthy();
   });
 
-  it('carga favoritos desde AsyncStorage', async () => {
+  it('loads favorites from AsyncStorage', async () => {
     const getItemMock = AsyncStorage.getItem as jest.Mock;
     getItemMock.mockResolvedValueOnce(JSON.stringify([2]));
 
@@ -189,7 +189,7 @@ describe('NewsListScreen', () => {
     expect(getItemMock).toHaveBeenCalledWith('favorites');
   });
 
-  it('navega al detalle de la noticia al presionar una noticia', () => {
+  it('navigates to news detail when a news item is pressed', () => {
     const mockNavigate = jest.fn();
     const navigation = { navigate: mockNavigate };
 
@@ -210,7 +210,7 @@ describe('NewsListScreen', () => {
     expect(mockNavigate).toHaveBeenCalledWith('NewsDetail', { id: 1, title: 'Noticia Uno' });
   });
 
-  it('filtra correctamente cuando showFavorites es true y la noticia no es favorita', () => {
+  it('filters correctly when showFavorites is true and the news is not favorite', () => {
     const { useSelector } = require('react-redux');
     (useSelector as jest.Mock).mockImplementation((selector) =>
       selector({ news: { favorites: [] } })

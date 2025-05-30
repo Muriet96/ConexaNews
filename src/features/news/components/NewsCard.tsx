@@ -12,6 +12,21 @@ interface NewsCardProps {
   onPress: () => void;
 }
 
+/**
+ * Renders a news card component displaying an image, title, publication date, content snippet,
+ * and actions for reading more or saving the news item as a favorite.
+ *
+ * @param {NewsCardProps} props - The props for the NewsCard component.
+ * @param {NewsItem} props.item - The news item to display in the card.
+ * @param {() => void} props.onPress - Callback invoked when the "Read More" button is pressed.
+ *
+ * @returns {JSX.Element} The rendered NewsCard component.
+ *
+ * @remarks
+ * - Uses theming from the current context.
+ * - Integrates with translation and Redux state for favorites.
+ * - Allows toggling the favorite status of the news item.
+ */
 const NewsCard = ({ item, onPress }: NewsCardProps) => {
   const theme = useTheme();
   const { t } = useTranslation('news');

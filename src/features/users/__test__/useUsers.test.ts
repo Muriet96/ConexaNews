@@ -25,7 +25,7 @@ describe('useUsers', () => {
     jest.clearAllMocks();
   });
 
-  it('despacha setUsers cuando hay datos', async () => {
+  it('dispatches setUsers when data is available', async () => {
     require('@tanstack/react-query').useQuery.mockImplementation(() => ({
       data: [
         { 
@@ -47,7 +47,7 @@ describe('useUsers', () => {
     });
   });
 
-  it('no despacha setUsers si no hay datos', async () => {
+  it('does not dispatch setUsers if there is no data', async () => {
     require('@tanstack/react-query').useQuery.mockImplementation(() => ({
       data: undefined,
       isLoading: false,

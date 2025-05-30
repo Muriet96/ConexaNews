@@ -59,7 +59,7 @@ describe('NewsCard', () => {
     jest.clearAllMocks();
   });
 
-  it('renderiza el título, contenido y botones', () => {
+  it('renders the title, content, and buttons', () => {
     const { getByText } = renderWithProviders(
       <NewsCard item={mockPost} onPress={jest.fn()} />
     );
@@ -69,7 +69,7 @@ describe('NewsCard', () => {
     expect(getByText(/save/i)).toBeTruthy();
   });
 
-  it('llama onPress cuando se presiona "read more"', () => {
+  it('calls onPress when "read more" is pressed', () => {
     const onPress = jest.fn();
     const { getByText } = renderWithProviders(
       <NewsCard item={mockPost} onPress={onPress} />
@@ -78,7 +78,7 @@ describe('NewsCard', () => {
     expect(onPress).toHaveBeenCalled();
   });
 
-  it('muestra "saved" y el icono correcto si es favorito', () => {
+  it('shows "saved" and the correct icon if it is a favorite', () => {
     // @ts-ignore
     require('react-redux').useSelector.mockImplementation((selector) => selector({ news: { favorites: [1] } }));
     const { getByText } = renderWithProviders(
@@ -87,7 +87,7 @@ describe('NewsCard', () => {
     expect(getByText(/saved/i)).toBeTruthy();
   });
 
-  it('llama toggleFavorite al presionar el botón de favorito', () => {
+  it('calls toggleFavorite when the favorite button is pressed', () => {
     const mockToggleFavorite = jest.fn();
     jest.spyOn(require('../hooks/useNewsActions'), 'useNewsActions').mockReturnValue({
       toggleFavorite: mockToggleFavorite,
