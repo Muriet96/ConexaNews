@@ -1,0 +1,6 @@
+{
+  "title": "Usuarios",
+  "loading": "Cargando usuarios...",
+  "error": "Error cargando usuarios",
+  "emptyList": "No hay usuarios para mostrar"
+}

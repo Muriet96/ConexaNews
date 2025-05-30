@@ -1,0 +1,60 @@
+{
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "retry": "Reintentar",
+    "emptyList": "No hay elementos para mostrar"
+  },
+  "listScreen": {
+    "title": "Últimas Noticias",
+    "searchPlaceholder": "Buscar noticias...",
+    "filter": {
+      "latest": "Más recientes",
+      "popular": "Más populares",
+      "favorites": "Favoritos"
+    },
+    "emptyResults": "No se encontraron noticias"
+  },
+  "detailScreen": {
+    "title": "Detalle de Noticia",
+    "author": "Por {{author}}",
+    "published": "Publicado el {{date}}",
+    "readTime": "Tiempo de lectura: {{minutes}} min",
+    "related": "Noticias relacionadas",
+    "actions": {
+      "save": "Guardar",
+      "share": "Compartir",
+      "report": "Reportar"
+    }
+  },
+  "card": {
+    "author": "Autor",
+    "anonymous": "Anónimo",
+    "readMore": "Leer más",
+    "save": "Guardar",
+    "saved": "Guardado",
+    "dateFormat": "DD/MM/YYYY",
+    "comments": {
+      "zero": "Sin comentarios",
+      "one": "1 comentario",
+      "other": "{{count}} comentarios"
+    }
+  },
+  "share": {
+    "title": "Compartir noticia",
+    "message": "Mira esta noticia: {{title}} - {{url}}"
+  },
+  "save": {
+    "success": "Noticia guardada en favoritos",
+    "error": "Error al guardar la noticia"
+  },
+  "errors": {
+    "newsNotFound": "Noticia no encontrada",
+    "loadNews": "No se pudo cargar la noticia"
+  },
+  "actions": {
+    "addFavorite": "Agregar a favoritos",
+    "removeFavorite": "Quitar de favoritos",
+    "goBack": "Volver"
+  }
+}

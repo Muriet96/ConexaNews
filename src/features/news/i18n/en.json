@@ -1,0 +1,59 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "retry": "Retry",
+    "emptyList": "No news available"
+  },
+  "listScreen": {
+    "searchPlaceholder": "Search news...",
+    "emptyResults": "No results found for '{{query}}'",
+    "filters": {
+      "latest": "Latest",
+      "popular": "Popular",
+      "favorites": "Favorites"
+    }
+  },
+  "errors": {
+    "newsNotFound": "News not found",
+    "loadNews": "Failed to load news"
+  },
+  "detailScreen": {
+    "title": "News Detail",
+    "author": "By {{author}}",
+    "published": "Published on {{date}}",
+    "readTime": "Read time: {{minutes}} min",
+    "related": "Related news",
+    "actions": {
+      "save": "Save",
+      "share": "Share",
+      "report": "Report"
+    }
+  },
+  "card": {
+    "author": "Author",
+    "anonymous": "Anonymous",
+    "readMore": "Read more",
+    "save": "Save",
+    "saved": "Saved",
+    "dateFormat": "MM/DD/YYYY",
+    "comments": {
+      "zero": "No comments",
+      "one": "1 comment",
+      "other": "{{count}} comments"
+    }
+  },
+  "share": {
+    "title": "Share news",
+    "message": "Check out this news: {{title}} - {{url}}"
+  },
+  "save": {
+    "success": "News saved to favorites",
+    "error": "Error saving news"
+  },
+  "actions": {
+    "addFavorite": "Add to favorites",
+    "removeFavorite": "Remove from favorites",
+    "goBack": "Go back"
+  }
+}

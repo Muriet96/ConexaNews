@@ -20,10 +20,20 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.muriet96.ConexaNews"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-font",
+      "expo-localization"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "35dc3122-1c9e-4ff4-ae47-a213bb2a504f"
+      }
     }
   }
 }
