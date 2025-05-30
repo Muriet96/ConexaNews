@@ -1,173 +1,172 @@
 # ConexaNews
 
-## Descripción
+## Description
 
-ConexaNews es una aplicación móvil desarrollada con React Native y Expo para la visualización, gestión y guardado de noticias. El proyecto está pensado para ser escalable, fácil de mantener y con una experiencia de usuario moderna y accesible.
+ConexaNews is a mobile application developed with React Native and Expo for viewing, managing, and saving news. The project is designed to be scalable, maintainable, and to provide a modern, accessible user experience.
 
 ---
 
-## Decisiones de diseño
+## Design Decisions
 
-### Patrón de diseño
+### Design Pattern
 
 - **Feature Sliced Architecture:**  
-  El código está organizado por funcionalidades (features) en carpetas independientes, facilitando la escalabilidad y el mantenimiento.
+  The code is organized by features in independent folders, making the project scalable and maintainable.
 - **Redux Toolkit:**  
-  Se utiliza para el manejo del estado global de manera sencilla y eficiente.
+  Used for simple and efficient global state management.
 - **React Query:**  
-  Para la gestión de datos asíncronos y cacheo de peticiones HTTP.
+  For asynchronous data management and HTTP request caching.
 - **React Navigation:**  
-  Permite una navegación fluida y desacoplada entre pantallas.
-- **Internacionalización (i18n):**  
-  Implementada con `react-i18next` para soportar múltiples idiomas.
-- **Componentes reutilizables:**  
-  Separación clara entre lógica y presentación, con componentes como `NewsCard`.
+  Enables smooth and decoupled navigation between screens.
+- **Internationalization (i18n):**  
+  Implemented with `react-i18next` to support multiple languages.
+- **Reusable components:**  
+  Clear separation between logic and presentation, with components like `NewsCard`.
 
-### Bibliotecas externas principales
+### Main External Libraries
 
-- [`react-native-paper`](https://callstack.github.io/react-native-paper/): UI Material Design.
-- [`react-navigation`](https://reactnavigation.org/): Navegación entre pantallas.
-- [`redux-toolkit`](https://redux-toolkit.js.org/): Manejo de estado global.
-- [`@tanstack/react-query`](https://tanstack.com/query/latest): Fetching y cacheo de datos.
-- [`react-i18next`](https://react.i18next.com/): Internacionalización.
-- [`@testing-library/react-native`](https://testing-library.com/docs/react-native-testing-library/intro/): Testing de componentes.
-- [`jest`](https://jestjs.io/): Framework de testing.
-- [`expo`](https://expo.dev/): Desarrollo y build multiplataforma.
+- [`react-native-paper`](https://callstack.github.io/react-native-paper/): Material Design UI.
+- [`react-navigation`](https://reactnavigation.org/): Screen navigation.
+- [`redux-toolkit`](https://redux-toolkit.js.org/): Global state management.
+- [`@tanstack/react-query`](https://tanstack.com/query/latest): Data fetching and caching.
+- [`react-i18next`](https://react.i18next.com/): Internationalization.
+- [`@testing-library/react-native`](https://testing-library.com/docs/react-native-testing-library/intro/): Component testing.
+- [`jest`](https://jestjs.io/): Testing framework.
+- [`expo`](https://expo.dev/): Cross-platform development and build.
 
 ---
 
-## Proceso para levantar el proyecto
+## Getting Started
 
-### 1. Requisitos previos
+### 1. Prerequisites
 
 - Node.js >= 18
-- Yarn o npm
+- Yarn or npm
 - Expo CLI (`npm install -g expo-cli`)
 
-### 2. Instalación de dependencias
+### 2. Install dependencies
 
 ```sh
 yarn install
-# o
+# or
 npm install
 ```
 
-### 3. Ejecución en desarrollo
+### 3. Run in development
 
 ```sh
 yarn start
-# o
+# or
 npm start
 ```
-Esto abrirá el panel de Expo. Desde ahí puedes lanzar la app en un emulador Android/iOS o en un dispositivo físico con la app Expo Go.
+This will open the Expo panel. From there you can launch the app in an Android/iOS emulator or on a physical device with the Expo Go app.
 
-### 4. Ejecutar los tests y ver cobertura
+### 4. Run tests and view coverage
 
 ```sh
 yarn test
-# o
+# or
 npm test
 ```
 
-Para ver la cobertura de tests:
+To view test coverage:
 
 ```sh
 yarn test --coverage
-# o
+# or
 npm test -- --coverage
 ```
 
-Los tests unitarios cubren slices de Redux, hooks, componentes y pantallas, asegurando la calidad y el correcto funcionamiento de la lógica y la UI. Se utilizan mocks para dependencias externas y se verifica el comportamiento esperado desde la perspectiva del usuario.
+Unit tests cover Redux slices, hooks, components, and screens, ensuring the quality and correct functioning of the logic and UI. Mocks are used for external dependencies, and the expected behavior is verified from the user's perspective.
 
 ---
 
-## Login de usuario
+## User Login
 
-Para hacer login en la app puedes usar **cualquiera de los usuarios y contraseñas** del servicio de users disponible en:
+To log in to the app, you can use **any of the usernames and passwords** from the users service available at:
 
 [https://jsonplaceholder.org/users](https://jsonplaceholder.org/users)
 
-Por ejemplo, puedes usar:
+For example, you can use:
 
-- **Usuario:** `johndoe`  
-  **Contraseña:** `jsonplaceholder.org`
-- **Usuario:** `janesmith`  
-  **Contraseña:** `jsonplaceholder.org`
-- **Usuario:** `bobjohnson`  
-  **Contraseña:** `jsonplaceholder.org`
-- **Usuario:** `emilydavis`  
-  **Contraseña:** `jsonplaceholder.org`
-- **Usuario:** `williambrown`  
-  **Contraseña:** `jsonplaceholder.org`
-- **Usuario:** `laurawilson`  
-  **Contraseña:** `jsonplaceholder.org`
-- **Usuario:** `michaelgarcia`  
-  **Contraseña:** `jsonplaceholder.org`
+- **Username:** `johndoe`  
+  **Password:** `jsonplaceholder.org`
+- **Username:** `janesmith`  
+  **Password:** `jsonplaceholder.org`
+- **Username:** `bobjohnson`  
+  **Password:** `jsonplaceholder.org`
+- **Username:** `emilydavis`  
+  **Password:** `jsonplaceholder.org`
+- **Username:** `williambrown`  
+  **Password:** `jsonplaceholder.org`
+- **Username:** `laurawilson`  
+  **Password:** `jsonplaceholder.org`
+- **Username:** `michaelgarcia`  
+  **Password:** `jsonplaceholder.org`
 
-Esto se implementó así porque, al tratarse de un login fake, era la forma más cómoda y transparente de validar usuarios en el entorno de pruebas.
-
----
-
-## Estructura del proyecto
-
-- `src/features/`: código de cada dominio funcional (news, settings, users, etc.)
-- `src/store/`: configuración de Redux y middlewares
-- `src/i18n/`: configuración y recursos de internacionalización
-- `src/navigation/`: configuración de navegación
-- `src/services/`: acceso a APIs externas
+This was implemented this way because, since it is a fake login, it was the most convenient and transparent way to validate users in the testing environment.
 
 ---
 
-## Aspectos evaluados y cómo se abordan
+## Project Structure
 
-### Arquitectura y file-system de la app
+- `src/features/`: code for each functional domain (news, settings, users, etc.)
+- `src/store/`: Redux configuration and middlewares
+- `src/i18n/`: internationalization configuration and resources
+- `src/navigation/`: navigation configuration
+- `src/services/`: access to external APIs
 
-- Se sigue una arquitectura modular por features, lo que permite escalar y mantener el proyecto fácilmente.
-- Cada feature tiene su propio slice, hooks, componentes y tests.
+---
 
-### Buenas prácticas, calidad y complejidad de código
+## Evaluated Aspects and How They Are Addressed
 
-- Uso de TypeScript para tipado estricto.
-- Separación clara entre lógica y presentación.
-- Componentes reutilizables y desacoplados.
-- Código documentado y fácil de seguir.
+### App Architecture and File System
 
-### Patrones implementados
+- A modular architecture by features is followed, allowing the project to be easily scaled and maintained.
+- Each feature has its own slice, hooks, components and tests.
 
-- **Feature Sliced Architecture** para modularidad.
-- **Redux Toolkit** para manejo de estado global.
-- **React Query** para fetching y cacheo de datos.
-- **Internacionalización** con i18next.
-- **Testing** con Testing Library y Jest.
+### Best Practices, Code Quality, and Complexity
 
-### Tests unitarios
+- Use of TypeScript for strict typing.
+- Clear separation between logic and presentation.
+- Reusable and decoupled components.
+- Well-documented and easy-to-follow code.
 
-- Se incluyen tests unitarios y de integración para slices, hooks y pantallas.
-- Se verifica el comportamiento de la UI y la lógica de negocio.
-- Se utiliza coverage para asegurar la calidad del código.
+### Implemented Patterns
+
+- **Feature Sliced Architecture** for modularity.
+- **Redux Toolkit** for global state management.
+- **React Query** for data fetching and caching.
+- **Internationalization** with i18next.
+- **Testing** with Testing Library and Jest.
+
+### Unit Tests
+
+- Unit and integration tests are included for slices, hooks, and screens.
+- The behavior of the UI and business logic is verified.
+- Coverage is used to ensure code quality.
 
 ### UX/UI
 
-- UI moderna y accesible con React Native Paper.
-- Navegación fluida y consistente.
-- Soporte para temas y accesibilidad.
-- Mensajes claros para el usuario en todos los estados (cargando, error, vacío, etc.).
+- Modern and accessible UI with React Native Paper.
+- Smooth and consistent navigation.
+- Support for themes and accessibility.
+- Clear messages for the user in all states (loading, error, empty, etc.).
 
 ### Performance
 
-- Uso de React Query para evitar refetching innecesario.
-- FlatList para listas eficientes.
-- Memoización de datos y componentes donde corresponde.
-- Redux Toolkit para evitar renders innecesarios.
+- Use of React Query to avoid unnecessary refetching.
+- FlatList for efficient lists.
+- Memoization of data and components where appropriate.
+- Redux Toolkit to avoid unnecessary renders.
 
 ---
 
-## Notas adicionales
+## Additional Notes
 
-- **Internacionalización:**  
-  Los textos están organizados por feature y por idioma, facilitando la localización y el mantenimiento.
+- **Internationalization:**  
+  Texts are organized by feature and language, making localization and maintenance easier.
 - **Testing:**  
-  Los tests usan mocks para dependencias externas y cubren tanto lógica como UI.
-- **Estilo:**  
-  El tema de la app se puede personalizar fácilmente desde el archivo `App.tsx`.
-
+  Tests use mocks for external dependencies and cover both logic and UI.
+- **Style:**  
+  The app's theme can be easily customized from the `App.tsx` file.
