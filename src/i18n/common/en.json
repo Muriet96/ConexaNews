@@ -1,7 +1,8 @@
 {
-  "news": "News",
+  "characters": "Characters",
   "users": "Users",
   "settings": "Settings",
-  "latestNews": "Latest News",
-  "detail": "Detail"
+  "latestCharacters": "Characters",
+  "detail": "Detail",
+  "favorites": "Favorites"
 }

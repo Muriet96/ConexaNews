@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { favoritesMiddleware } from '../favoritesMiddleware';
-import { toggleFavorite } from '@features/news/newsSlice';
+import { toggleFavorite } from '@features/characters/charactersSlice';
 
 jest.mock('@react-native-async-storage/async-storage', () => ({
   setItem: jest.fn(),
@@ -9,7 +9,7 @@ jest.mock('@react-native-async-storage/async-storage', () => ({
 describe('favoritesMiddleware', () => {
   const next = jest.fn();
   const getState = jest.fn(() => ({
-    news: { favorites: [1, 2, 3] }
+    characters: { favorites: [1, 2, 3] }
   }));
   const store = { getState } as any;
 
@@ -18,7 +18,7 @@ describe('favoritesMiddleware', () => {
     next.mockImplementation(action => action);
   });
 
-  it('llama next(action) y guarda favoritos en AsyncStorage si la acción es toggleFavorite', () => {
+  it('calls next(action) and saves favorites in AsyncStorage if the action is toggleFavorite', () => {
     const action = toggleFavorite(1);
 
     const result = favoritesMiddleware(store)(next)(action);
@@ -28,7 +28,7 @@ describe('favoritesMiddleware', () => {
     expect(result).toBe(action);
   });
 
-  it('llama next(action) y NO guarda favoritos si la acción no es toggleFavorite', () => {
+  it('calls next(action) and does NOT save favorites if the action is not toggleFavorite', () => {
     const action = { type: 'other/action' };
 
     const result = favoritesMiddleware(store)(next)(action);

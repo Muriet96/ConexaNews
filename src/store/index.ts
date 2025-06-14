@@ -1,19 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import newsReducer from '@features/news/newsSlice';
-import usersReducer from '@features/users/userSlice';
-import settingsReducer from '@features/settings/settingsSlice';
+import charactersReducer from '@features/characters/charactersSlice';
 import { favoritesMiddleware } from './middlewares/favoritesMiddleware';
-import { loginMiddleware } from './middlewares/loginMiddleware';
-import { languageMiddleware } from './middlewares/languageMiddleware';
 
 export const store = configureStore({
   reducer: {
-    news: newsReducer,
-    users: usersReducer,
-    settings: settingsReducer,
+    characters: charactersReducer
   },
   middleware: getDefaultMiddleware =>
-    getDefaultMiddleware().concat(favoritesMiddleware, loginMiddleware, languageMiddleware)
+    getDefaultMiddleware().concat(favoritesMiddleware)
 });
 
 export type AppDispatch = typeof store.dispatch;

@@ -1,8 +1,8 @@
-# ConexaNews
+# ReactAndMorty
 
 ## Description
 
-ConexaNews is a mobile application developed with React Native and Expo for viewing, managing, and saving news. The project is designed to be scalable, maintainable, and to provide a modern, accessible user experience.
+ReactAndMorty is a mobile application developed with React Native and Expo for viewing, managing, and saving news. The project is designed to be scalable, maintainable, and to provide a modern, accessible user experience.
 
 ---
 
@@ -77,34 +77,11 @@ yarn test --coverage
 npm test -- --coverage
 ```
 
-Unit tests cover Redux slices, hooks, components, and screens, ensuring the quality and correct functioning of the logic and UI. Mocks are used for external dependencies, and the expected behavior is verified from the user's perspective.
+Unit and integration tests cover Redux slices, hooks, components, and screens, ensuring the quality and correct functioning of the logic and UI.  
+Mocks are used for external dependencies (such as API calls, AsyncStorage, navigation, and i18n), and the expected behavior is verified from the user's perspective.
 
----
-
-## User Login
-
-To log in to the app, you can use **any of the usernames and passwords** from the users service available at:
-
-[https://jsonplaceholder.org/users](https://jsonplaceholder.org/users)
-
-For example, you can use:
-
-- **Username:** `johndoe`  
-  **Password:** `jsonplaceholder.org`
-- **Username:** `janesmith`  
-  **Password:** `jsonplaceholder.org`
-- **Username:** `bobjohnson`  
-  **Password:** `jsonplaceholder.org`
-- **Username:** `emilydavis`  
-  **Password:** `jsonplaceholder.org`
-- **Username:** `williambrown`  
-  **Password:** `jsonplaceholder.org`
-- **Username:** `laurawilson`  
-  **Password:** `jsonplaceholder.org`
-- **Username:** `michaelgarcia`  
-  **Password:** `jsonplaceholder.org`
-
-This was implemented this way because, since it is a fake login, it was the most convenient and transparent way to validate users in the testing environment.
+**Coverage reports** are generated in the `coverage/` folder.  
+You can open `coverage/lcov-report/index.html` in your browser to see detailed coverage by file, including statements, branches, and functions.
 
 ---
 
@@ -145,6 +122,7 @@ This was implemented this way because, since it is a fake login, it was the most
 - Unit and integration tests are included for slices, hooks, and screens.
 - The behavior of the UI and business logic is verified.
 - Coverage is used to ensure code quality.
+- Tests cover all main branches and edge cases, including error and loading states.
 
 ### UX/UI
 
@@ -167,6 +145,7 @@ This was implemented this way because, since it is a fake login, it was the most
 - **Internationalization:**  
   Texts are organized by feature and language, making localization and maintenance easier.
 - **Testing:**  
-  Tests use mocks for external dependencies and cover both logic and UI.
+  Tests use mocks for external dependencies and cover both logic and UI.  
+  Coverage reports are generated and can be viewed in detail in the `coverage/` folder.
 - **Style:**  
   The app's theme can be easily customized from the `App.tsx` file.

@@ -1,65 +1,58 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import NewsListScreen from '@features/news/screens/NewsListScreen';
-import NewsDetailScreen from '@features/news/screens/NewsDetailScreen';
-import UserListScreen from '@features/users/screens/UserListScreen';
-import SettingsScreen from '@features/settings/screens/SettingsScreen';
-import LoginScreen from '@features/settings/screens/LoginScreen';
+import CharactersListScreen from '@features/characters/screens/CharactersListScreen';
+import CharactersDetailScreen from '@features/characters/screens/CharactersDetailScreen';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { NewsStackParamList, RootTabParamList } from './types';
-import { useDispatch } from 'react-redux';
-import { setLanguage, login } from '@features/settings/settingsSlice';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useSettings } from '@features/settings/hooks/useSettings';
+import { CharactersStackParamList, RootTabParamList } from './types';
 import { useTheme } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 
-const NewsStack = createStackNavigator<NewsStackParamList>();
+const CharactersStack = createStackNavigator<CharactersStackParamList>();
 const Tab = createBottomTabNavigator<RootTabParamList>();
 
-function NewsStackNavigator() {
+function CharactersStackNavigator({ route }: { route?: any }) {
   const theme = useTheme();
   const { t } = useTranslation('common');
+  const showFavorites = route?.params?.showFavorites ?? false;
+
   return (
-    <NewsStack.Navigator
+    <CharactersStack.Navigator
       screenOptions={{
         headerStyle: { backgroundColor: theme.colors.primary },
         headerTintColor: '#fff',
       }}
     >
-      <NewsStack.Screen
-        name="NewsList"
-        component={NewsListScreen}
-        options={{ title: t('latestNews') }}
+      <CharactersStack.Screen
+        name="CharactersList"
+        component={CharactersListScreen}
+        options={{ title: t('latestCharacters') }}
+        initialParams={{ showFavorites }}
       />
-      <NewsStack.Screen
-        name="NewsDetail"
-        component={NewsDetailScreen}
+      <CharactersStack.Screen
+        name="CharactersDetail"
+        component={CharactersDetailScreen}
         options={({ route }) => ({
           title: route.params?.title ?? t('detail'),
           headerBackButtonDisplayMode: 'minimal',
         })}
       />
-    </NewsStack.Navigator>
+    </CharactersStack.Navigator>
   );
 }
 
-function MainTabs() {
+function AppNavigator() {
   const theme = useTheme();
   const { t } = useTranslation('common');
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
-        tabBarIcon: ({ color, size }) => {
-          if (route.name === 'News') {
-            return <MaterialCommunityIcons name="newspaper" color={color} size={size} />;
-          }
-          if (route.name === 'Users') {
+        tabBarIcon: ({ color, size, focused }) => {
+          if (route.name === 'Characters') {
             return <MaterialCommunityIcons name="account-group" color={color} size={size} />;
           }
-          if (route.name === 'Settings') {
-            return <MaterialCommunityIcons name="cog" color={color} size={size} />;
+          if (route.name === 'Favorites') {
+            return <MaterialCommunityIcons name="heart" color={color} size={size} />;
           }
           return null;
         },
@@ -71,48 +64,18 @@ function MainTabs() {
       })}
     >
       <Tab.Screen
-        name="News"
-        component={NewsStackNavigator}
-        options={{ title: t('news'), headerShown: false }}
+        name="Characters"
+        component={CharactersStackNavigator}
+        options={{ title: t('characters'), headerShown: false }}
       />
       <Tab.Screen
-        name="Users"
-        component={UserListScreen}
-        options={{ title: t('users'), headerShown: true }}
-      />
-      <Tab.Screen
-        name="Settings"
-        component={SettingsScreen}
-        options={{ title: t('settings'), headerShown: true }}
+        name="Favorites"
+        component={CharactersStackNavigator}
+        options={{ title: t('favorites'), headerShown: false }}
+        initialParams={{ showFavorites: true }}
       />
     </Tab.Navigator>
   );
 }
-
-const AppNavigator = () => {
-  const { isAuthenticated } = useSettings();
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    const restoreAuth = async () => {
-      const userStr = await AsyncStorage.getItem('user');
-      const isAuth = await AsyncStorage.getItem('isAuthenticated');
-      const lang = await AsyncStorage.getItem('language');
-      if (userStr && isAuth === 'true') {
-        dispatch(login(JSON.parse(userStr)));
-      }
-      if (lang) {
-        dispatch(setLanguage(lang));
-      }
-    };
-    restoreAuth();
-  }, [dispatch]);
-
-  if (!isAuthenticated) {
-    return <LoginScreen />;
-  }
-
-  return <MainTabs />;
-};
 
 export default AppNavigator;

@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "ConexaNews",
-    "slug": "ConexaNews",
+    "name": "ReactAndMorty",
+    "slug": "ReactAndMorty",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,7 +21,7 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.muriet96.ConexaNews"
+      "package": "com.muriet96.ReactAndMorty"
     },
     "web": {
       "favicon": "./assets/favicon.png"

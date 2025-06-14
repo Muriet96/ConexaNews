@@ -3351,9 +3351,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"conexanews@workspace:.":
+"reactandmorty@workspace:.":
   version: 0.0.0-use.local
-  resolution: "conexanews@workspace:."
+  resolution: "reactandmorty@workspace:."
   dependencies:
     "@babel/core": ^7.25.2
     "@react-native-async-storage/async-storage": ^2.1.2

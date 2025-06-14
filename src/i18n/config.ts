@@ -11,24 +11,18 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import * as Localization from 'expo-localization';
 
-import newsTranslations from '@features/news/i18n';
-import usersTranslations from '@features/users/i18n';
-import settingsTranslations from '@features/settings/i18n';
+import charactersTranslations from '@features/characters/i18n';
 import commonEn from './common/en.json';
 import commonEs from './common/es.json';
 
 const resources = {
   en: {
     common: commonEn,
-    ...newsTranslations.en,
-    ...usersTranslations.en,
-    ...settingsTranslations.en,
+    ...charactersTranslations.en
   },
   es: {
     common: commonEs,
-    ...newsTranslations.es,
-    ...usersTranslations.es,
-    ...settingsTranslations.es,
+    ...charactersTranslations.es
   },
 };
 

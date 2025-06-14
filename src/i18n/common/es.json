@@ -1,7 +1,8 @@
 {
-  "news": "Noticias",
+  "characters": "Personajes",
   "users": "Usuarios",
   "settings": "Configuración",
-  "latestNews": "Últimas Noticias",
-  "detail": "Detalle"
+  "latestCharacters": "Personajes",
+  "detail": "Detalle",
+  "favorites": "Favoritos"
 }
